@@ -8,6 +8,75 @@
   <body>
     <div class="wrapper">
       <h1>The Dojo Message Board</h1>
+      <hr>
+      <div class="message_entry">
+        <fieldset>
+          <legend>Add a message</legend>
+          <form action="/messages" method="post">
+            <div>
+              <label for="name">Name</label>
+              <input
+                type="text"
+                name="name"
+                <% if ( messageWarnings.name ) { %>
+                  value="<%= messageWarnings.name %>"
+                <% } %>
+              >
+            </div>
+            <div>
+              <label for="message">Message</label>
+              <textarea name="message"><% if ( messageWarnings.message ) { %><%= messageWarnings.message %><% } %></textarea>
+            </div>
+            <% if ( messageWarnings.warnings ) { %>
+              <div class="warning">
+                <% for ( warning of messageWarnings.warnings ) { %>
+                  <p><%= warning %></p>
+                <% } %>
+              </div>
+            <% } %>
+            <button>Post Message</button>
+          </form>
+        </fieldset>
+      </div>
+      <% for ( message of messages ) { %>
+        <div class="message_display">
+          <p>Name: <%= message.name %></p>
+          <p>Message: <%= message.message %></p>
+          <% for ( comment of message.comments ) { %>
+            <div class="comment_display">
+              <p>Name: <%= comment.name %></p>
+              <p>Comment: <%= comment.comment %></p>
+            </div>
+          <% } %>
+          <fieldset>
+            <legend>Add a comment</legend>
+            <form action="/messages/edit/<%= message.id %>" method="post">
+              <div>
+                <label for="name">Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  <% if ( commentWarnings.id == message.id && commentWarnings.name ) { %>
+                    value="<%= commentWarnings.name %>"
+                  <% } %>
+                >
+              </div>
+              <div>
+                <label for="comment">Comment</label>
+                <textarea name="comment"><% if ( commentWarnings.id == message.id && commentWarnings.comment ) { %><%= commentWarnings.comment %><% } %></textarea>
+              </div>
+              <% if ( commentWarnings.id == message.id ) { %>
+                <div class="warning">
+                  <% for ( warning of commentWarnings.warnings ) { %>
+                    <p><%= warning %></p>
+                  <% } %>
+                </div>
+              <% } %>
+              <button>Post Comment</button>
+            </form>
+          </fieldset>
+        </div>
+      <% } %>
     </div>
   </body>
 </html>

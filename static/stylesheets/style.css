@@ -8,3 +8,55 @@
   width: 80%;
   margin: 25px auto;
 }
+
+.message_entry {
+  padding: 10px 0px;
+}
+
+.message_display {
+  margin-top: 15px;
+  padding: 15px;
+  border: 1px solid gray;
+}
+
+.comment_display {
+  padding: 15px 0px 0px 30px;
+  font-size: .8em;
+}
+
+.warning {
+  width: 80%;
+  margin: 10px auto;
+  padding: 15px;
+  color: red;
+  background-color: whitesmoke;
+  border: 1px solid gray;
+  border-radius: 2px;
+}
+
+fieldset {
+  margin: 10px auto 0px;
+  padding: 15px;
+}
+
+label {
+  display: block;
+}
+input {
+  font-size: 1em;
+}
+
+textarea {
+  width: 100%;
+  height: 75px;
+  font-size: 1em;
+}
+
+button {
+  float: right;
+  padding: 3px 8px;
+  font-size: 1em;
+  background-color: whitesmoke;
+  border: 1px solid gray;
+  border-radius: 3px;
+}
